@@ -3,6 +3,7 @@ title: "Analiza Czynników Wpływających na Frekwencję Wyborczą w Polsce"
 author: "Jakub Anczyk"
 format:
   pdf:
+    papersize: a4
     portrait:
        fig-width: 5
        fig-height: 3
@@ -79,7 +80,7 @@ Z tej przyczyny zarówno w interesie władzy jak i obywateli leży dążenie do 
 
 Frekwencja wyborcza jest zjawiskiem intensywnie badanym na Zachodzie, w tym przede wszystkim w Stanach Zjednoczonych, a dostępna literatura proponuje wiele metod jej modelowania. Tymczasem wydaje się, że w Polsce zjawisko to jest badane na znacznie mniejszą skalę w porównaniu do reszty świata zachodniego. Warto jednak zaznaczyć, że ta ocena opiera się głównie na dostępnych publicznie badaniach i nie jest jasne, na ile badania frekwencji są prowadzone na zlecenie partii politycznych lub innych zainteresowanych stron przez ośrodki badań opinii publicznej.
 
-W niniejszej pracy podjęto próbę uzupełnienia tego braku oraz zaproponowano model objaśniający frekwencję na poziomie województw, który może być także wykorzystany do oszacowania frekwencji wyborczej na poziomie krajowym. W tym celu przeanalizowano wpływ rozmaitych czynników na frekwencję wyborczą, począwszy od wskaźników ekonomicznych, społeczno-gospodarczych i demograficznych, a skończywszy na wynikach badań opinii publicznej. W pracy przeanalizowano frekwencję wyborczą na poziomie wojewódzkim, oraz uzupełniająco na poziomie krajowym (Polska) i europejskim, począwszy od 1922 roku aż po rok 2023.
+W niniejszej pracy podjęto próbę uzupełnienia tego braku oraz zaproponowano modele objaśniające frekwencję na poziomie województw, które mogą być także wykorzystane do szacowania frekwencji wyborczej na poziomie krajowym. W tym celu przeanalizowano wpływ rozmaitych czynników na frekwencję wyborczą, począwszy od wskaźników ekonomicznych, społeczno-gospodarczych i demograficznych, a skończywszy na wynikach badań opinii publicznej. W pracy przeanalizowano frekwencję wyborczą na poziomie wojewódzkim, oraz uzupełniająco na poziomie krajowym (Polska) i europejskim, począwszy od 1922 roku aż po rok 2023.
 
 ```{r voter_turnout_overview}
 #| eval: true # Evaluate the code chunk
@@ -161,9 +162,9 @@ ggplot(data = poland, aes(x = Year, y = turnout_vdem_owid)) +
 
 ```
 
-Ponadto, zachowane dane ekonomiczne, społeczno-gospodarcze i demograficzne z okresu między 1919 a 1952 rokiem są szczątkowe lub nie nadają się do przeprowadzenia podobnej do niniejszej analizy (a nawet gdyby dane były idealne, nie sposób porównywać dane z okręgów Królestwa Polskiego do aktualnego podziału terytorialnego Polski).
+Ponadto, zachowane dane ekonomiczne, społeczno-gospodarcze i demograficzne z okresu między 1919 a 1952 rokiem są szczątkowe lub nie nadają się do przeprowadzenia podobnej do niniejszej analizy. Ponadto nie sposób porównywać dane z okręgów Królestwa Polskiego do aktualnego podziału terytorialnego Polski.
 
-Z pozoru prostsze wydaje się zestawienie współczesnej frekwencji z frekwencją w Polskiej Rzeczpospolitej Ludowej. Jak widać na rysunku 1, od 1952 roku oficjalna frekwencja wyborcza oscylowała raczej w górnych granicach skali, ze średnią w okolicach 96.66%, osiągając w 1980 roku rekordowy poziom 98.87%. Najniższą frekwencję w tym okresie odnotowano w 1957 roku i wyniosła ona 94.14%. Dla porównania, w tym samym okresie średnia dla państw, w których obowiązywał prawny przymus głosowania (Austria, Belgia, Włochy i Luksemburg) wynosiła jedynie 92.95%, z minimum na poziomie 88.56% i maksimum 97.16%, co ilustruje rysunek 2. Jak podają źródła historyczne [@siedziako2016], osiągnięcie w Polsce tak wysokiego wyniku bez stosowania metod polegających na manipulacjach oraz fałszerstwach wyborczych, było technicznie niemożliwe.
+Z pozoru prostsze wydaje się zestawienie współczesnej frekwencji z frekwencją w Polskiej Rzeczpospolitej Ludowej. Od 1952 roku oficjalna frekwencja wyborcza oscylowała raczej w górnych granicach skali (rys. 1.), ze średnią w okolicach 96.66%, osiągając w 1980 roku rekordowy poziom 98.87%. Najniższą frekwencję w tym okresie odnotowano w 1957 roku i wyniosła ona 94.14%. Dla porównania, w tym samym okresie średnia dla państw, w których obowiązywał prawny przymus głosowania (Austria, Belgia, Włochy i Luksemburg) wynosiła jedynie 92.95%, z minimum na poziomie 88.56% i maksimum 97.16%, co ilustruje rysunek 2. Jak podają źródła historyczne [@siedziako2016], osiągnięcie w Polsce tak wysokiego wyniku bez stosowania metod polegających na manipulacjach oraz fałszerstwach wyborczych, było technicznie niemożliwe.
 
 Należy także zaznaczyć, że definicja głosu ważnego znacznie różniła się od współczesnej, bowiem wrzuconą do urny pustą kartę (bez tzw. "skreśleń") traktowano jako głos ważny, a głos domyślnie przydzielano kandydatom znajdującym się na początku listy (tj. z góry ustalonym przez partię). Karty wyborcze zawierały wyłącznie jedną listę, co w praktyce uniemożliwiało oddanie głosu na kandydata niewskazanego pośrednio przez władzę, a jakiekolwiek próby rejestracji list wyborczych przez obywateli kończyły się niepowodzeniem z uwagi na rzekome "przeszkody formalne".
 
@@ -219,7 +220,7 @@ Większość danych niezbędnych dla przeprowadzenia analizy, w szczególności 
 
 # Przegląd literatury
 
-Obszerna literatura psefologiczna proponuje liczne modele wyjaśniające frekwencję wyborczą na poziomie krajowym i ponadkrajowym. Badacze koncentrują się jednak w głównej mierze na dużych zachodnich demokracjach o systemie dwupartyjnym - Stanach Zjednoczonych Ameryki [@GomezHansfordKrause07], Wielkiej Brytanii [@Murr18] i Francji, oraz w mniejszym stopniu na pozostałych zachodnich demokracjach europejskich. Przyczyną jest względna łatwość w modelowaniu zarówno frekwencji jak i wyników wyborczych, kiedy liczebność partii na scenie politycznej jest niewielka [@Huber18]. W przypadku tych systemów frekwencja wyborcza może mieć decydujący wpływ na ostateczny wynik wyborczy, a co za tym idzie, znajomość czynników determinujących frekwencję może dostarczyć partiom politycznym kluczowych danych niezbędnych do optymalnej aktywizacji ich elektoratu.
+Obszerna literatura psefologiczna proponuje liczne modele wyjaśniające frekwencję wyborczą na poziomie krajowym i ponadkrajowym. Badacze koncentrują się jednak w głównej mierze na dużych zachodnich demokracjach o systemie dwupartyjnym - Stanach Zjednoczonych Ameryki [@GomezHansfordKrause07], Wielkiej Brytanii [@Murr18] i Francji, oraz w mniejszym stopniu na pozostałych zachodnich demokracjach europejskich. Przyczyną jest względna łatwość w modelowaniu zarówno frekwencji jak i wyników wyborczych, kiedy liczebność partii na scenie politycznej jest niewielka. W przypadku tych systemów frekwencja wyborcza może mieć decydujący wpływ na ostateczny wynik wyborczy, a co za tym idzie, znajomość czynników determinujących frekwencję może dostarczyć partiom politycznym kluczowych danych niezbędnych do optymalnej aktywizacji ich elektoratu.
 
 Literatura odnosząca się do pozostałych krajów skupia się raczej na poszukiwaniu czynników mających wpływ na frekwencją wyborczą [@BlaisDobrzynska98], a więc próbuje frekwencję objaśniać, a nie prognozować, lub poszukuje odpowiedzi na pytania "co jest przyczyną niskiej frekwencji wyborczej" oraz "jak podnieść poziom frekwencji wyborczej" skupiając się na pokrewnym, choć odwrotnym do frekwencji zjawisku, którym jest absencja wyborcza [@Sasińska-Klas_2008; @Musiał-Karg_2011].
 
@@ -293,9 +294,12 @@ Dane wykorzystane w analizie pochodzą z następujących źródeł:
 4.  Portal Państwowej Komisji Wyborczej, z którego pobrano informacje o frekwencji wyborczej w poszczególnych województwach,
 5.  Strona "Trendy" Centrum Badania Opinii Społecznej, z której pobrano dane o trendach wybranych wskaźników pochodzące z rozmaitych sondaży realizowanych przez CBOS od lat 90.
 
-Szczegółowy spis zmiennych wraz z ich źródłem, zakresem czasowym i opisem znajduje się załączniku nr. 1 do niniejszej pracy. Zmienne wtórne, które obliczono przy pomocy danych pochodzących z opisanych powyżej źródeł (np. gęstość zaludnienia może zostać obliczona przy pomocy rozmiaru terytorium oraz liczby mieszkańców zamieszkujących owo terytorium) znajdują się w załączniku nr. 2 do niniejszej pracy. Kod źródłowy, który posłużył do ekstrakcji części danych z interfejsów API, obliczeń, analizy i prezentacji wyników, znajduje się załączniku nr. 3 do niniejszej pracy.
+Pobrane i wykorzystane w pracy dane znajdują się w folderze "Data" w głównej bibliotece repozytorium GitHub niniejszej pracy[^2].
+Szczegółowy spis zmiennych wraz z ich źródłem, zakresem czasowym i opisem znajduje się w pliku "primary_variables.xlsx". Zmienne wtórne, które obliczono przy pomocy danych pochodzących z opisanych powyżej źródeł (np. gęstość zaludnienia może zostać obliczona przy pomocy rozmiaru terytorium oraz liczby mieszkańców zamieszkujących owo terytorium) znajdują się w pliku "secondary_variables.xlsx". Kod źródłowy, który posłużył do ekstrakcji danych z portalu Państwowej Komisji Wyborczej znajduje się w pliku "Electoral_Data_PKW.R", a kod źródłowy pozostałej części pracy, w tym obliczenia, analizy i szczegółowe ich wyniki, znajdują się w pliku "Project_Main_v8.qmd".
 
-W celu stworzenia jednolitego zbioru danych do analizy frekwencji na poziomie wojewódzkim pobrano oficjalne dane wyborcze w rozbiciu na województwa i powiaty w latach 2005, 2007, 2011, 2015, 2019 oraz 2023 z portalu Państwowej Komisji Wyborczej. Szczegółowy opis tego procesu znajduje się w kodzie dostępnym w załączniku nr. 3. Uzyskano w ten sposób zestaw danych zawierający nazwę województwa, rok wyborów oraz frekwencję wyborczą.
+[^2]: https://github.com/kubbajb/Analysis-of-Factors-Influencing-Voter-Turnout-in-Poland
+
+W celu stworzenia jednolitego zbioru danych do analizy frekwencji na poziomie wojewódzkim pobrano oficjalne dane wyborcze w rozbiciu na województwa i powiaty w latach 2005, 2007, 2011, 2015, 2019 oraz 2023 z portalu Państwowej Komisji Wyborczej. Uzyskano w ten sposób zestaw danych zawierający nazwę województwa, rok wyborów oraz frekwencję wyborczą.
 
 Do danych o frekwencji przyłączono tabelę zawierającą powierzchnię każdego z województw, a następnie zestaw 48 zmiennych pochodzący z portali GUS. Zmienne te opóźniono o rok względem danych o frekwencji. Oznacza to, że analizowane w każdym cyklu wyborczym dane pochodzą z roku poprzedzającego, ponieważ w przeciwnym razie dane obejmowałyby także wydarzenia mające miejsce bezpośrednio po wyborach, a tym samym analiza cyklu wyborczego mogłaby zostać wypaczona przez ich wynik. O ile nie powinno to mieć znaczenia dla takich statystyk jak średnia oczekiwana długość życia lub współczynnik skolaryzacji, o tyle może mieć wpływ na takie statystyki jak PKB lub PNB, które mogą zostać zaburzone na skutek reakcji inwestorów (jeżeli, na przykład, wybory wygra opcja liberalna gospodarczo, to inwestorzy mogą chcieć zwiększyć inwestycje w Polską gospodarkę, jeśli jednak wygra opcja konserwatywna, to inwestorzy zagraniczni mogą zacząć wycofywać fundusze z kraju, spodziewając się dodatkowych utrudnień takich jak cła, podatki i niekorzystne obostrzenia regulacyjne).
 
@@ -331,7 +335,7 @@ Ponadto, modele liniowe są podatne na nadmierne dopasowanie i charakteryzują s
 
 ### Ograniczenia badań sondażowych
 
-Ważnym ograniczeniem są również potencjalne wady badań sondażowych CBOS. Należy zwrócić uwagę na błąd próby, który może wynikać z braku reprezentatywności próby względem populacji, na przykład z powodu wykluczenia osób bez dostępu do technologii używanej w badaniu lub osób odmawiających udziału.
+Ważnym ograniczeniem są również potencjalne wady badań sondażowych CBOS. Należy zwrócić uwagę na błąd próby, który może wynikać z braku reprezentatywności próby względem populacji, na przykład z powodu wykluczenia osób bez dostępu do technologii używanej w badaniu lub osób odmawiających udziału w badaniu.
 
 Kolejnym ograniczeniem jest błąd pomiaru, który przejawia się w niedokładności lub nieprawidłowości odpowiedzi respondentów. Należy również rozważyć ograniczenia narzędzi badawczych, które mogą nie uwzględniać pełnej złożoności opinii lub prowadzić do problemów z interpretacją pytań ankietowych. Ponadto, efekty samoświadomości i społecznej pożądliwości mogą prowadzić do udzielania niepełnych lub zniekształconych odpowiedzi przez respondentów.
 
@@ -618,7 +622,7 @@ W opisanym modelu znalazły się ostatecznie następujące zmienne:
 #| fig-cap: "Frekwencja wyborcza a przeciętne dalsze trwanie życia [lata]."
 #| fig-align: "center"
 #| fig-width: 6
-#| fig-height: 2
+#| fig-height: 3
 
 cor_life_exp <- 
   cor(data_train$przecietne_dalsze_trwanie_zycia_kobiety_lata,
@@ -652,13 +656,14 @@ life_exp_plt <- data_train |>
 life_exp_general_plt <- data_train |> 
 ggplot(aes(x = frekwencja)) + 
   geom_point(aes(y = przecietne_dalsze_trwanie_zycia_ogolem_lata), col = "#d21619") +
-  geom_smooth(formula = y ~ x, aes(y = przecietne_dalsze_trwanie_zycia_ogolem_lata),  
-              method = "lm", col = "#d21619",fullrange = T, na.rm = T, se = F) +
+  geom_smooth(formula = y ~ x, aes(y = przecietne_dalsze_trwanie_zycia_ogolem_lata, color = "Trend Liniowy"),  
+              method = "lm", fullrange = TRUE, na.rm = TRUE, se = FALSE, show.legend = TRUE) +
+  scale_color_manual(name = "", values = c("Trend Liniowy" = "#d21619")) +
   xlab("Frekwencja wyborcza") +
   theme_light(base_size = 8) +
   theme(legend.direction = "horizontal", legend.position = "bottom",axis.title.y = element_blank()) +
   stat_cor(label.x = 55, label.y	= 74.3, aes(y = przecietne_dalsze_trwanie_zycia_ogolem_lata), method = "pearson", size = 3)
-  
+
 grid.arrange(life_exp_plt, life_exp_general_plt, ncol = 2)
 
 # Lineplot: (Frekwencja wyborcza ~ Rok, Ogółem ~ Rok)
@@ -711,11 +716,13 @@ cor_density_pop <-
 data_train |> 
 ggplot(aes(x = frekwencja)) + 
   geom_point(aes(y = gestosc_zaludnienia_osob_na_km2), col = "#d21619") +
-  geom_smooth(formula = y ~ x, aes(y = gestosc_zaludnienia_osob_na_km2),  
-              method = "lm", col = "#d21619",fullrange = T, na.rm = T, se = F) +
+  geom_smooth(formula = y ~ x, aes(y = gestosc_zaludnienia_osob_na_km2, color = "Trend Liniowy"),  
+              method = "lm", fullrange = TRUE, na.rm = TRUE, se = FALSE, show.legend = TRUE) +
+  scale_color_manual(name = "", values = c("Trend Liniowy" = "#d21619")) + 
   xlab("Frekwencja wyborcza") +
+  ylab(paste("Gęstość zaludnienia [os./km²]")) +
   theme_light(base_size = 8) +
-  theme(legend.direction = "horizontal", legend.position = "bottom",axis.title.y = element_blank()) +
+  theme(legend.direction = "horizontal", legend.position = "right") +
   stat_cor(label.x = 40, label.y	= 300, aes(y = gestosc_zaludnienia_osob_na_km2), method = "pearson", size = 3)
   
 ```
@@ -743,16 +750,13 @@ cor_pnb_ww <-
 data_train |> 
 ggplot(aes(x = frekwencja)) + 
   geom_point(aes(y = produkt_krajowy_brutto_na_1_mieszkanca_zl), col = "#d21619", na.rm = T) +
-  geom_smooth(formula = y ~ x, aes(y = produkt_krajowy_brutto_na_1_mieszkanca_zl),
-              method = "lm", 
-              col = "#d21619", 
-              fullrange = T, 
-              na.rm = T, 
-              se = F) +
+  geom_smooth(formula = y ~ x, aes(y = produkt_krajowy_brutto_na_1_mieszkanca_zl, color = "Trend Liniowy"),  
+              method = "lm", fullrange = TRUE, na.rm = TRUE, se = FALSE, show.legend = TRUE) +
+  scale_color_manual(name = "", values = c("Trend Liniowy" = "#d21619")) +
   xlab("Frekwencja wyborcza") +
   ylab(paste("Produkt krajowy brutto \nna 1 mieszkańca [zł]")) +
   theme_light(base_size = 8) +
-  theme(legend.direction = "horizontal", legend.position = "bottom") +
+  theme(legend.direction = "horizontal", legend.position = "right") +
   stat_cor(label.x = 35, label.y	= 75000, aes(y = produkt_krajowy_brutto_na_1_mieszkanca_zl), method = "pearson", na.rm = T, size = 3)
   
 ```
@@ -809,23 +813,36 @@ ggplot(aes(x = frekwencja)) +
     # Scatterplot: (Zmiana produktu krajowego brutto na 1 mieszkańca w okresie 2 lat [%], post 2004 ~ Frekwencja): 
 
     gdp_change_post2004_plt <- data_train |>
-      filter(rok > 2005) |> 
-    ggplot(aes(x = frekwencja, 
-               y = zmiana_produktu_krajowego_brutto_na_1_mieszkanca_percent_1_rok, 
-               na.rm = TRUE)) + 
-      geom_point(aes(colour = rok)) +
-      labs(subtitle = "Wykres bez 2005 roku") + 
-      xlab("Frekwencja wyborcza (2007 - 2023") +
-      theme_light(base_size = 8) +
-      theme(legend.direction = "horizontal", legend.position = "bottom", axis.title.y = element_blank()) +
-      stat_cor(aes(y = zmiana_produktu_krajowego_brutto_na_1_mieszkanca_percent_1_rok), method = "pearson", size = 3) +
-      geom_smooth(formula = y ~ x,
-                  aes(y = zmiana_produktu_krajowego_brutto_na_1_mieszkanca_percent_1_rok),  
-                  method = "lm", 
-                  col = "#d21619", 
-                  fullrange = T, na.rm = T, se = F)
+  filter(rok > 2005) |> 
+  ggplot(aes(x = frekwencja, 
+             y = zmiana_produktu_krajowego_brutto_na_1_mieszkanca_percent_1_rok, 
+             na.rm = TRUE)) + 
+  geom_point(aes(colour = rok)) + 
+  labs(subtitle = "Wykres bez 2005 roku") + 
+  xlab("Frekwencja wyborcza (2007 - 2023)") +
+  theme_light(base_size = 8) +
+  theme(legend.direction = "horizontal", 
+        legend.position = "bottom", 
+        axis.title.y = element_blank()) +
+  stat_cor(aes(y = zmiana_produktu_krajowego_brutto_na_1_mieszkanca_percent_1_rok), 
+           method = "pearson", 
+           size = 3) +
+  geom_smooth(formula = y ~ x,
+              aes(y = zmiana_produktu_krajowego_brutto_na_1_mieszkanca_percent_1_rok, 
+                  linetype = "Trend Liniowy"),  
+              method = "lm", 
+              fullrange = TRUE, 
+              na.rm = TRUE, 
+              se = FALSE, 
+              show.legend = TRUE, 
+              color = "#d21619") +  
+  scale_color_continuous(name = "Rok") +  
+  scale_linetype_manual(name = "", values = c("Trend Liniowy" = "solid"))
 
     grid.arrange(gdp_change_plt, gdp_change_post2004_plt, ncol = 2)
+    
+    
+  # Add trendline to legend using linetype
 
     # data_train$`zmiana produktu krajowego brutto na 1 mieszkańca [%, 2 lata, pre 2004]` <- 
     #   ifelse(data_train$post2005 == 0, 
@@ -838,9 +855,9 @@ ggplot(aes(x = frekwencja)) +
     #          0)
     ```
 
-5.  **Współczynnik skolaryzacji netto dla szkół podstawowych** włączono z uwagi na pokrewieństwo ze wskaźnikiem analfabetyzmu, którego pomiaru nie dokonuje się w Polsce w podziale na regiony z uwagi na wysoki stopień piśmienności Polaków. Według oficjalnych statystyk Banku Światowego, stopień alfabetyzmu Polaków utrzymuje się na poziomie powyżej 99.3 od 1988 roku[^2]. Z tego powodu zarówno dokonywanie pomiarów analfabetyzmu, jak również szacowanie na jego podstawie frekwencji wyborczej może w przypadku Polski nie przynieść oczekiwanego efektu. W modelu ujęto zatem współczynnik skolaryzacji netto dla szkół podstawowych, który określa stosunek liczby wszystkich osób uczących się na danym poziomie do całej populacji osób będących w wieku nominalnie przypisanym temu poziomowi kształcenia. Współczynnik skolaryzacji netto dla szkół podstawowych koreluje z frekwencją wyborczą ujemnie na poziomie -0.3325 (rys. 7.).
+5.  **Współczynnik skolaryzacji netto dla szkół podstawowych** włączono z uwagi na pokrewieństwo ze wskaźnikiem analfabetyzmu, którego pomiaru nie dokonuje się w Polsce w podziale na regiony z uwagi na wysoki stopień piśmienności Polaków. Według oficjalnych statystyk Banku Światowego, stopień alfabetyzmu Polaków utrzymuje się na poziomie powyżej 99.3 od 1988 roku[^3]. Z tego powodu zarówno dokonywanie pomiarów analfabetyzmu, jak również szacowanie na jego podstawie frekwencji wyborczej może w przypadku Polski nie przynieść oczekiwanego efektu. W modelu ujęto zatem współczynnik skolaryzacji netto dla szkół podstawowych, który określa stosunek liczby wszystkich osób uczących się na danym poziomie do całej populacji osób będących w wieku nominalnie przypisanym temu poziomowi kształcenia. Współczynnik skolaryzacji netto dla szkół podstawowych koreluje z frekwencją wyborczą ujemnie na poziomie -0.3325 (rys. 7.).
 
-[^2]: Wskaźnik alfabetyzacji osób dorosłych (udział osób w wieku 15 lat i więcej), UNESCO Institute for Statistics (UIS), UIS.Stat Bulk Data Download Service, dostęp 24 kwietnia 2024, https://data.worldbank.org/indicator/SE.ADT.LITR.ZS.
+[^3]: Wskaźnik alfabetyzacji osób dorosłych (udział osób w wieku 15 lat i więcej), UNESCO Institute for Statistics (UIS), UIS.Stat Bulk Data Download Service, dostęp 24 kwietnia 2024, https://data.worldbank.org/indicator/SE.ADT.LITR.ZS.
 
 ```{r scolarisation}
 #| eval: true # Evaluate the code chunk
@@ -849,7 +866,7 @@ ggplot(aes(x = frekwencja)) +
 #| warning: false # Include warnings in the output
 #| error: false # Include errors in the output
 #| include: true # Catch all for preventing any output
-#| fig-cap: "Frekwencja wyborcza a gęstość zaludnienia."
+#| fig-cap: "Frekwencja wyborcza a współczynnik skolaryzacji netto dla szkół podstawowych."
 #| fig-align: "center"
 #| fig-width: 4
 #| fig-height: 2
@@ -861,12 +878,12 @@ cor_scolarisation <-
 data_train |> 
 ggplot(aes(x = frekwencja)) + 
   geom_point(aes(y = wspolczynnik_skolaryzacji_netto_szkoly_podstawowe_percent), col = "#d21619") +
-  geom_smooth(formula = y ~ x, aes(y = wspolczynnik_skolaryzacji_netto_szkoly_podstawowe_percent),  
-              method = "lm", col = "#d21619",fullrange = T, na.rm = T, se = F) +
+  geom_smooth(formula = y ~ x, aes(y = wspolczynnik_skolaryzacji_netto_szkoly_podstawowe_percent, color = "Trend Liniowy"), method = "lm", fullrange = TRUE, na.rm = TRUE, se = FALSE, show.legend = TRUE) +  scale_color_manual(name = "", values = c("Trend Liniowy" = "#d21619")) +
   xlab("Frekwencja wyborcza") +
+  ylab(paste("Współczynnik skolaryzacji \nnetto dla szkół podstawowych [%]")) +
   theme_light(base_size = 8) +
-  theme(legend.direction = "horizontal", legend.position = "bottom",axis.title.y = element_blank()) +
-  stat_cor(label.x = 60, label.y	= 98.1, aes(y = wspolczynnik_skolaryzacji_netto_szkoly_podstawowe_percent), method = "pearson", size = 3)
+  theme(legend.direction = "horizontal", legend.position = "right") +
+  stat_cor(label.x = 35, label.y	= 90.8, aes(y = wspolczynnik_skolaryzacji_netto_szkoly_podstawowe_percent), method = "pearson", size = 3)
   
 ```
 
@@ -879,7 +896,7 @@ ggplot(aes(x = frekwencja)) +
 #| warning: false # Include warnings in the output
 #| error: false # Include errors in the output
 #| include: true # Catch all for preventing any output
-#| fig-cap: "Frekwencja wyborcza a gęstość zaludnienia."
+#| fig-cap: "Frekwencja wyborcza a ludność w tysiącach."
 #| fig-align: "center"
 #| fig-width: 4
 #| fig-height: 2
@@ -891,11 +908,11 @@ cor_population_size <-
 data_train |> 
 ggplot(aes(x = frekwencja)) + 
   geom_point(aes(y = ludnosc_w_tysiacach_tys_osob), col = "#d21619") +
-  geom_smooth(formula = y ~ x, aes(y = ludnosc_w_tysiacach_tys_osob),  
-              method = "lm", col = "#d21619",fullrange = T, na.rm = T, se = F) +
+  geom_smooth(formula = y ~ x, aes(y = ludnosc_w_tysiacach_tys_osob, color = "Trend Liniowy"), method = "lm", fullrange = TRUE, na.rm = TRUE, se = FALSE, show.legend = TRUE) +  scale_color_manual(name = "", values = c("Trend Liniowy" = "#d21619")) +
   xlab("Frekwencja wyborcza") +
+  ylab(paste("Ludność w tysiącach")) +
   theme_light(base_size = 8) +
-  theme(legend.direction = "horizontal", legend.position = "bottom",axis.title.y = element_blank()) +
+  theme(legend.direction = "horizontal", legend.position = "right") +
   stat_cor(label.x = 35, label.y	= 4000, aes(y = ludnosc_w_tysiacach_tys_osob), method = "pearson", size = 3)
   
 ```
@@ -1335,18 +1352,19 @@ Pośród zmiennych modelu N95425 znalazły się dwie zmienne ankietowe pochodzą
     data_train |> 
     ggplot(aes(x = frekwencja)) + 
       geom_point(aes(y = cbos_stosunek_do_integracji_z_ue_przeciwnicy), col = "#d21619") +
-      geom_smooth(formula = y ~ x, aes(y = cbos_stosunek_do_integracji_z_ue_przeciwnicy),  
-              method = "lm", col = "#d21619",fullrange = T, na.rm = T, se = F) +
+      geom_smooth(formula = y ~ x, aes(y = cbos_stosunek_do_integracji_z_ue_przeciwnicy, color = "Trend Liniowy"), method = "lm", fullrange = TRUE, na.rm = TRUE, se = FALSE, show.legend = TRUE) +  
+      scale_color_manual(name = "", values = c("Trend Liniowy" = "#d21619")) +
       xlab("Frekwencja wyborcza") +
+      ylab(paste("Udział osób deklarujących się \njako przeciwnicy integracji \nz Unią Europejską [%]")) +
       theme_light(base_size = 8) +
-      theme(legend.direction = "horizontal", legend.position = "bottom",axis.title.y = element_blank()) +
-      stat_cor(label.x = 60, label.y	= 15, aes(y = cbos_stosunek_do_integracji_z_ue_przeciwnicy), method = "pearson", size = 3)
+      theme(legend.direction = "horizontal", legend.position = "right") +
+      stat_cor(label.x = 40, label.y	= 15, aes(y = cbos_stosunek_do_integracji_z_ue_przeciwnicy), method = "pearson", size = 3)
       
     ```
 
     1.2. **Udział osób średnio zadowolonych z życia** - zmienna reprezentuje średni procent osób, które w 12 miesiącach poprzedzających dane wybory parlamentarne, w ankietach CBOS z pytaniem “Czy na ogół jest Pan(i) zadowolony(a) ogólnie z całego życia?”, spośród odpowiedzi “zadowolony(a)”, “średnio zadowolony(a)” oraz “niezadowolony(a)” wybrały drugą opcję.
 
-    Zmienna ta silnie i odwrotnie koreluje z frekwencją wyborczą, ze współczynnikiem korelacji Pearsona wynoszącym -0.652 (rys. 10.). Test istotności t-Studenta (p-value = 0.008753) wskazuje na istotność zmiennej dla modelu. Wartość parametru przy tej zmiennej wynosi około 0.4098, co oznacza, że wzrost odsetka osób średnio zadowolonych z życia o 10% powoduje wzrost frekwencji wyborczej w województwie o około 4.0978% (ceteris paribus). Województwa z wyższym udziałem osób średnio zadowolonych z życia odnotowują wyższą frekwencję wyborczą w porównaniu do tych, gdzie udział ten jest mniejszy.
+    Zmienna ta silnie i odwrotnie koreluje z frekwencją wyborczą, ze współczynnikiem korelacji Pearsona wynoszącym -0.652 (rys. 10.). Test istotności t-Studenta (p-value = 0.008753) wskazuje na istotność zmiennej dla modelu. Wartość parametru przy tej zmiennej wynosi około 0.4098, co oznacza, że wzrost odsetka osób średnio zadowolonych z życia o 10% powoduje wzrost frekwencji wyborczej w województwie o około 4.0978% (ceteris paribus). Województwa z wyższym udziałem osób średnio zadowolonych z życia odnotowują niższą frekwencję wyborczą w porównaniu do tych, gdzie udział ten jest mniejszy.
 
     ```{r zmienne_N95425_1_2}
     #| eval: true # Evaluate the code chunk
@@ -1379,11 +1397,12 @@ Pośród zmiennych modelu N95425 znalazły się dwie zmienne ankietowe pochodzą
     data_train |> 
     ggplot(aes(x = frekwencja)) + 
       geom_point(aes(y = cbos_zadowolenie_z_zycia_srednio_zadowolony), col = "#d21619") +
-      geom_smooth(formula = y ~ x, aes(y = cbos_zadowolenie_z_zycia_srednio_zadowolony),  
-              method = "lm", col = "#d21619",fullrange = T, na.rm = T, se = F) +
+      geom_smooth(formula = y ~ x, aes(y = cbos_zadowolenie_z_zycia_srednio_zadowolony, color = "Trend Liniowy"), method = "lm", fullrange = TRUE, na.rm = TRUE, se = FALSE, show.legend = TRUE) +  
+      scale_color_manual(name = "", values = c("Trend Liniowy" = "#d21619")) +
       xlab("Frekwencja wyborcza") +
+      ylab(paste("Udział osób średnio \nzadowolonych z życia [%]")) +
       theme_light(base_size = 8) +
-      theme(legend.direction = "horizontal", legend.position = "bottom",axis.title.y = element_blank()) +
+      theme(legend.direction = "horizontal", legend.position = "right") +
       stat_cor(label.x = 35, label.y	= 17.5, aes(y = cbos_zadowolenie_z_zycia_srednio_zadowolony), method = "pearson", size = 3)
       
     ```
@@ -1425,11 +1444,11 @@ Pośród zmiennych modelu N95425 znalazły się dwie zmienne ankietowe pochodzą
     data_train |> 
     ggplot(aes(x = frekwencja)) + 
       geom_point(aes(y = zmiana_produktu_krajowego_brutto_na_1_mieszkanca_percent_1_rok), col = "#d21619") +
-      geom_smooth(formula = y ~ x, aes(y = zmiana_produktu_krajowego_brutto_na_1_mieszkanca_percent_1_rok),  
-              method = "lm", col = "#d21619",fullrange = T, na.rm = T, se = F) +
+  geom_smooth(formula = y ~ x, aes(y = zmiana_produktu_krajowego_brutto_na_1_mieszkanca_percent_1_rok, color = "Trend Liniowy"), method = "lm", fullrange = TRUE, na.rm = TRUE, se = FALSE, show.legend = TRUE) +  scale_color_manual(name = "", values = c("Trend Liniowy" = "#d21619")) +
       xlab("Frekwencja wyborcza") +
+      ylab(paste("Zmiana produktu krajowego brutto \nna 1 mieszkańca w \nprzeciągu 1 roku [%]")) +
       theme_light(base_size = 8) +
-      theme(legend.direction = "horizontal", legend.position = "bottom",axis.title.y = element_blank()) +
+      theme(legend.direction = "horizontal", legend.position = "right") +
       stat_cor(label.x = 35, label.y	= 17.5, aes(y = zmiana_produktu_krajowego_brutto_na_1_mieszkanca_percent_1_rok), method = "pearson", size = 3)
       
     ```
@@ -1468,12 +1487,12 @@ Pośród zmiennych modelu N95425 znalazły się dwie zmienne ankietowe pochodzą
 
     data_train |> 
     ggplot(aes(x = frekwencja)) + 
-      geom_point(aes(y = naklady_inwestycyjne_na_1_mieszkanca_w_sektorze_publicznym_zl), col = "#d21619") +
-      geom_smooth(formula = y ~ x, aes(y = naklady_inwestycyjne_na_1_mieszkanca_w_sektorze_publicznym_zl),  
-              method = "lm", col = "#d21619",fullrange = T, na.rm = T, se = F) +
+      geom_point(aes(y = naklady_inwestycyjne_na_1_mieszkanca_w_sektorze_publicznym_zl), col = "#d21619") + 
+      geom_smooth(formula = y ~ x, aes(y = naklady_inwestycyjne_na_1_mieszkanca_w_sektorze_publicznym_zl, color = "Trend Liniowy"), method = "lm", fullrange = TRUE, na.rm = TRUE, se = FALSE, show.legend = TRUE) +  scale_color_manual(name = "", values = c("Trend Liniowy" = "#d21619")) +
       xlab("Frekwencja wyborcza") +
+      ylab(paste("Nakłady inwestycyjne \nna 1 mieszkańca \nw sektorze publicznym [zł]")) +
       theme_light(base_size = 8) +
-      theme(legend.direction = "horizontal", legend.position = "bottom",axis.title.y = element_blank()) +
+      theme(legend.direction = "horizontal", legend.position = "right") +
       stat_cor(label.x = 35, label.y	= 4500, aes(y = naklady_inwestycyjne_na_1_mieszkanca_w_sektorze_publicznym_zl), method = "pearson", size = 3)
       
     ```
@@ -1511,12 +1530,12 @@ Pośród zmiennych modelu N95425 znalazły się dwie zmienne ankietowe pochodzą
 
     data_train |> 
     ggplot(aes(x = frekwencja)) + 
-      geom_point(aes(y = naklady_inwestycyjne_na_1_mieszkanca_w_sektorze_prywatnym_zl), col = "#d21619") +
-      geom_smooth(formula = y ~ x, aes(y = naklady_inwestycyjne_na_1_mieszkanca_w_sektorze_prywatnym_zl),  
-              method = "lm", col = "#d21619",fullrange = T, na.rm = T, se = F) +
+      geom_point(aes(y = naklady_inwestycyjne_na_1_mieszkanca_w_sektorze_prywatnym_zl), col = "#d21619") + 
+      geom_smooth(formula = y ~ x, aes(y = naklady_inwestycyjne_na_1_mieszkanca_w_sektorze_prywatnym_zl, color = "Trend Liniowy"), method = "lm", fullrange = TRUE, na.rm = TRUE, se = FALSE, show.legend = TRUE) +  scale_color_manual(name = "", values = c("Trend Liniowy" = "#d21619")) +
       xlab("Frekwencja wyborcza") +
+      ylab(paste("Nakłady inwestycyjne \nna 1 mieszkańca\n w sektorze prywatnym [zł]")) +
       theme_light(base_size = 8) +
-      theme(legend.direction = "horizontal", legend.position = "bottom",axis.title.y = element_blank()) +
+      theme(legend.direction = "horizontal", legend.position = "right") +
       stat_cor(label.x = 35, label.y	= 7500, aes(y = naklady_inwestycyjne_na_1_mieszkanca_w_sektorze_prywatnym_zl), method = "pearson", size = 3)
       
     ```
@@ -1558,13 +1577,12 @@ Pośród zmiennych modelu N95425 znalazły się dwie zmienne ankietowe pochodzą
 
     data_train |> 
     ggplot(aes(x = frekwencja)) + 
-      geom_point(aes(y = udzial_ludnosci_w_wieku_produkcyjnym_percent), col = "#d21619") +
-      geom_smooth(formula = y ~ x, aes(y = udzial_ludnosci_w_wieku_produkcyjnym_percent),  
-              method = "lm", col = "#d21619",fullrange = T, na.rm = T, se = F) +
+      geom_point(aes(y = udzial_ludnosci_w_wieku_produkcyjnym_percent), col = "#d21619") + 
+      geom_smooth(formula = y ~ x, aes(y = udzial_ludnosci_w_wieku_produkcyjnym_percent, color = "Trend Liniowy"), method = "lm", fullrange = TRUE, na.rm = TRUE, se = FALSE, show.legend = TRUE) +  scale_color_manual(name = "", values = c("Trend Liniowy" = "#d21619")) +
       xlab("Frekwencja wyborcza") +
-      ylab("Udział ludności w wieku produkcyjnym") +
+      ylab(paste("Udział ludności \nw wieku produkcyjnym [%]")) +
       theme_light(base_size = 8) +
-      theme(legend.direction = "horizontal", legend.position = "bottom",axis.title.y = element_blank()) +
+      theme(legend.direction = "horizontal", legend.position = "right") +
       stat_cor(label.x = 35, label.y	= 59, aes(y = udzial_ludnosci_w_wieku_produkcyjnym_percent), method = "pearson", size = 3)
       
     ```
@@ -1673,9 +1691,9 @@ Model zastosowano na danych dotyczących wyborów parlamentarnych w 2023 roku. �
 
 Średnie bezwzględne odchylenie predykcji wynosiło 3.621 punktów procentowych, a jego bezwzględne odchylenie standardowe 2.688 pp. Największa odnotowana pozytywna różnica względem frekwencji zaobserwowanej wyniosła +9.839 pp. w województwie mazowieckim, z kolei największa negatywna różnica wyniosła -7.8635 w województwie Małopolskim. Najmniejsze odchylenie wyniosło +0.1322 oraz +0.9070 pp kolejno w województwie Śląskim i Opolskim. Wyniki wskazują na zróżnicowanie dokładności przewidywań modelu w zależności od regionu (rys. 15).
 
-Model w tej postaci, po przeprowadzeniu dziesięciokrotnej walidacji krzyżowej charakteryzuje się skorygowanym współczynnikiem R-kwadrat na poziomie 0.9240. Wyniki walidacji modelu na zbiorze testowym wskazują na bardzo zbliżoną wartość R-kwadrat na poziomie 0.9309 (+0.0069 w porównaniu do skorygowanego R-kwadrat obliczonego na zbiorze treningowym), z pierwiastkiem błędu średniokwadratowego wynoszącym 3.3685 i średnim błędem absolutnym na poziomie 2.4889, wskazując na dużą wydajność modelu na różnych podzbiorach i brak nadmiernego dopasowania, co oznacza, że model daje się dobrze uogólnić na nowe dane [^3].
+Model w tej postaci, po przeprowadzeniu dziesięciokrotnej walidacji krzyżowej charakteryzuje się skorygowanym współczynnikiem R-kwadrat na poziomie 0.9240. Wyniki walidacji modelu na zbiorze testowym wskazują na bardzo zbliżoną wartość R-kwadrat na poziomie 0.9309 (+0.0069 w porównaniu do skorygowanego R-kwadrat obliczonego na zbiorze treningowym), z pierwiastkiem błędu średniokwadratowego wynoszącym 3.3685 i średnim błędem absolutnym na poziomie 2.4889, wskazując na dużą wydajność modelu na różnych podzbiorach i brak nadmiernego dopasowania, co oznacza, że model daje się dobrze uogólnić na nowe dane [^4].
 
-[^3]: Ze względu na małą liczebność próby (16 województw i 6 cykli wyborczych daje 96 obserwacji, które po podzieleniu na zbiór uczący i testowy w proporcjach 7:3 dają zaledwie 63 obserwacje w zbiorze uczącym i 33 obserwacje w zbiorze testowym), wartości zostały potwierdzone za pomocą bootstrappingu (1000 iteracji). Współczynnik R-kwadrat wyniósł 0.9544 (przedział ufności 95%: 0.9214, 0.9843), pierwiastek błędu średniokwadratowego wyniósł 2.0283 (przedział ufności 95%: 1.2105, 2.7984) a średni błąd absolutny wyniósł 1.5610 (przedział ufności 95%: 0.9100, 2.3183). Niewielkie odchylenia dają podstawy do uznania, że model jest stabilny i dobrze dopasowany, a wyniki są wiarygodne nawet przy ograniczonej liczebności próby. Wartości te sugerują, że model nie jest nadmiernie dopasowany do danych treningowych i zachowuje swoją zdolność predykcyjną w odniesieniu do nowych danych.
+[^4]: Ze względu na małą liczebność próby (16 województw i 6 cykli wyborczych daje 96 obserwacji, które po podzieleniu na zbiór uczący i testowy w proporcjach 7:3 dają zaledwie 63 obserwacje w zbiorze uczącym i 33 obserwacje w zbiorze testowym), wartości zostały potwierdzone za pomocą bootstrappingu (1000 iteracji). Współczynnik R-kwadrat wyniósł 0.9544 (przedział ufności 95%: 0.9214, 0.9843), pierwiastek błędu średniokwadratowego wyniósł 2.0283 (przedział ufności 95%: 1.2105, 2.7984) a średni błąd absolutny wyniósł 1.5610 (przedział ufności 95%: 0.9100, 2.3183). Niewielkie odchylenia dają podstawy do uznania, że model jest stabilny i dobrze dopasowany, a wyniki są wiarygodne nawet przy ograniczonej liczebności próby. Wartości te sugerują, że model nie jest nadmiernie dopasowany do danych treningowych i zachowuje swoją zdolność predykcyjną w odniesieniu do nowych danych.
 
 Aby zbadać wiarygodność i stabilność modelu, przetestowano go pod kątem homoskedastyczności za pomocą testu Breuscha-Pagana na poziomie istotności α = 0.05. Wynik testu (BP = 1.7351, df = 3, p-value = 0.6292) wskazuje na brak istotnych dowodów przeciwko hipotezie zerowej o homoskedastyczności. Oznacza to, że nie ma podstaw do stwierdzenia, że wariancja reszt modelu nie jest stała.
 
@@ -1823,7 +1841,7 @@ Pośród zmiennych modelu N113549 znalazły się dwie zmienne ankietowe pochodz�
     #| warning: false # Include warnings in the output
     #| error: false # Include errors in the output
     #| include: true # Catch all for preventing any output
-    #| fig-cap: "Frekwencja wyborcza a obojętny stosunek do rządu [%]."
+    #| fig-cap: "Frekwencja wyborcza a a udział osób deklarujących obojętny stosunek do rządu [%]."
     #| fig-align: "center"
     #| fig-width: 4
     #| fig-height: 2
@@ -1846,11 +1864,11 @@ Pośród zmiennych modelu N113549 znalazły się dwie zmienne ankietowe pochodz�
     data_train |> 
     ggplot(aes(x = frekwencja)) + 
       geom_point(aes(y = cbos_stosunek_do_rzadu_obojetni), col = "#d21619") +
-      geom_smooth(formula = y ~ x, aes(y = cbos_stosunek_do_rzadu_obojetni),  
-              method = "lm", col = "#d21619",fullrange = T, na.rm = T, se = F) +
+  geom_smooth(formula = y ~ x, aes(y = cbos_stosunek_do_rzadu_obojetni, color = "Trend Liniowy"), method = "lm", fullrange = TRUE, na.rm = TRUE, se = FALSE, show.legend = TRUE) +  scale_color_manual(name = "", values = c("Trend Liniowy" = "#d21619")) +
       xlab("Frekwencja wyborcza") +
+      ylab(paste("Udział osób deklarujących \nobojętny stosunek do rządu [%]")) +
       theme_light(base_size = 8) +
-      theme(legend.direction = "horizontal", legend.position = "bottom",axis.title.y = element_blank()) +
+      theme(legend.direction = "horizontal", legend.position = "right") +
       stat_cor(label.x = 35, label.y	= 22.5, aes(y = cbos_stosunek_do_rzadu_obojetni), method = "pearson", size = 3)
       
     ```
@@ -1866,7 +1884,7 @@ Pośród zmiennych modelu N113549 znalazły się dwie zmienne ankietowe pochodz�
     #| warning: false # Include warnings in the output
     #| error: false # Include errors in the output
     #| include: true # Catch all for preventing any output
-    #| fig-cap: "Frekwencja wyborcza a obojętny stosunek do rządu [%]."
+    #| fig-cap: "Frekwencja wyborcza a udział osób deklarujących brak większych problemów ze znalezieniem odpowiedniej pracy [%]."
     #| fig-align: "center"
     #| fig-width: 4
     #| fig-height: 2
@@ -1890,11 +1908,11 @@ Pośród zmiennych modelu N113549 znalazły się dwie zmienne ankietowe pochodz�
     data_train |> 
     ggplot(aes(x = frekwencja)) + 
       geom_point(aes(y = cbos_rynek_pracy_bez_wiekszych_problemow_mozna_znalezc_odpowiednia_prace), col = "#d21619") +
-      geom_smooth(formula = y ~ x, aes(y = cbos_rynek_pracy_bez_wiekszych_problemow_mozna_znalezc_odpowiednia_prace),  
-              method = "lm", col = "#d21619",fullrange = T, na.rm = T, se = F) +
+  geom_smooth(formula = y ~ x, aes(y = cbos_rynek_pracy_bez_wiekszych_problemow_mozna_znalezc_odpowiednia_prace, color = "Trend Liniowy"), method = "lm", fullrange = TRUE, na.rm = TRUE, se = FALSE, show.legend = TRUE) +  scale_color_manual(name = "", values = c("Trend Liniowy" = "#d21619")) +
       xlab("Frekwencja wyborcza") +
+      ylab(paste("Udział osób deklarujących \nbrak większych problemów \nze znalezieniem odpowiedniej \npracy [%]")) +
       theme_light(base_size = 8) +
-      theme(legend.direction = "horizontal", legend.position = "bottom",axis.title.y = element_blank()) +
+      theme(legend.direction = "horizontal", legend.position = "right") +
       stat_cor(label.x = 35, label.y	= 15, aes(y = cbos_rynek_pracy_bez_wiekszych_problemow_mozna_znalezc_odpowiednia_prace), method = "pearson", size = 3)
       
     ```
@@ -1935,12 +1953,12 @@ Pośród zmiennych modelu N113549 znalazły się dwie zmienne ankietowe pochodz�
     data_train |> 
     ggplot(aes(x = frekwencja)) + 
       geom_point(aes(y = naklady_inwestycyjne_na_1_mieszkanca_ogolem_zl), col = "#d21619") +
-      geom_smooth(formula = y ~ x, aes(y = naklady_inwestycyjne_na_1_mieszkanca_ogolem_zl),  
-              method = "lm", col = "#d21619",fullrange = T, na.rm = T, se = F) +
+  geom_smooth(formula = y ~ x, aes(y = naklady_inwestycyjne_na_1_mieszkanca_ogolem_zl, color = "Trend Liniowy"), method = "lm", fullrange = TRUE, na.rm = TRUE, se = FALSE, show.legend = TRUE) +  scale_color_manual(name = "", values = c("Trend Liniowy" = "#d21619")) +
       xlab("Frekwencja wyborcza") +
+      ylab(paste("Nnakłady inwestycyjne \nna 1 mieszkańca \nw sektorze prywatnym [zł]")) +
       theme_light(base_size = 8) +
-      theme(legend.direction = "horizontal", legend.position = "bottom",axis.title.y = element_blank()) +
-      stat_cor(label.x = 35, label.y	= 10000, aes(y = naklady_inwestycyjne_na_1_mieszkanca_ogolem_zl), method = "pearson", size = 3)
+      theme(legend.direction = "horizontal", legend.position = "right") +
+      stat_cor(label.x = 35, label.y	= 11500, aes(y = naklady_inwestycyjne_na_1_mieszkanca_ogolem_zl), method = "pearson", size = 3)
       
     ```
 
@@ -1980,12 +1998,12 @@ Pośród zmiennych modelu N113549 znalazły się dwie zmienne ankietowe pochodz�
     data_train |> 
     ggplot(aes(x = frekwencja)) + 
       geom_point(aes(y = udzial_ludnosci_w_wieku_przedprodukcyjnym_percent), col = "#d21619") +
-      geom_smooth(formula = y ~ x, aes(y = udzial_ludnosci_w_wieku_przedprodukcyjnym_percent),  
-              method = "lm", col = "#d21619",fullrange = T, na.rm = T, se = F) +
+  geom_smooth(formula = y ~ x, aes(y = udzial_ludnosci_w_wieku_przedprodukcyjnym_percent, color = "Trend Liniowy"), method = "lm", fullrange = TRUE, na.rm = TRUE, se = FALSE, show.legend = TRUE) +  scale_color_manual(name = "", values = c("Trend Liniowy" = "#d21619")) +
       xlab("Frekwencja wyborcza") +
+      ylab(paste("Udział ludności w \nwieku przedprodukcyjnym [%]")) +
       theme_light(base_size = 8) +
-      theme(legend.direction = "horizontal", legend.position = "bottom",axis.title.y = element_blank()) +
-      stat_cor(label.x = 60, label.y	= 23, aes(y = udzial_ludnosci_w_wieku_przedprodukcyjnym_percent), method = "pearson", size = 3)
+      theme(legend.direction = "horizontal", legend.position = "right") +
+      stat_cor(label.x = 45, label.y	= 23, aes(y = udzial_ludnosci_w_wieku_przedprodukcyjnym_percent), method = "pearson", size = 3)
       
     ```
 
@@ -2023,11 +2041,11 @@ Pośród zmiennych modelu N113549 znalazły się dwie zmienne ankietowe pochodz�
     data_train |> 
     ggplot(aes(x = frekwencja)) + 
       geom_point(aes(y = ludnosc_wg_grup_wieku_i_plci_25_29_ogolem_osoba), col = "#d21619") +
-      geom_smooth(formula = y ~ x, aes(y = ludnosc_wg_grup_wieku_i_plci_25_29_ogolem_osoba ),  
-              method = "lm", col = "#d21619",fullrange = T, na.rm = T, se = F) +
+  geom_smooth(formula = y ~ x, aes(y = ludnosc_wg_grup_wieku_i_plci_25_29_ogolem_osoba, color = "Trend Liniowy"), method = "lm", fullrange = TRUE, na.rm = TRUE, se = FALSE, show.legend = TRUE) +  scale_color_manual(name = "", values = c("Trend Liniowy" = "#d21619")) +
       xlab("Frekwencja wyborcza") +
+      ylab(paste("Udział ludności w \nwieku 25-29 lat [%]")) +
       theme_light(base_size = 8) +
-      theme(legend.direction = "horizontal", legend.position = "bottom",axis.title.y = element_blank()) +
+      theme(legend.direction = "horizontal", legend.position = "right") +
       stat_cor(label.x = 35, label.y	= 6, aes(y = ludnosc_wg_grup_wieku_i_plci_25_29_ogolem_osoba ), method = "pearson", size = 3)
       
     ```
@@ -2068,12 +2086,13 @@ Pośród zmiennych modelu N113549 znalazły się dwie zmienne ankietowe pochodz�
     data_train |> 
     ggplot(aes(x = frekwencja)) + 
       geom_point(aes(y = wspolczynnik_skolaryzacji_brutto_szkoly_policealne_w_tym_kolegia_wiek_19_21_lat_percent), col = "#d21619") +
-      geom_smooth(formula = y ~ x, aes(y = wspolczynnik_skolaryzacji_brutto_szkoly_policealne_w_tym_kolegia_wiek_19_21_lat_percent),  
-              method = "lm", col = "#d21619",fullrange = T, na.rm = T, se = F) +
+      geom_smooth(formula = y ~ x, aes(y = wspolczynnik_skolaryzacji_brutto_szkoly_policealne_w_tym_kolegia_wiek_19_21_lat_percent, color = "Trend Liniowy"), method = "lm", fullrange = TRUE, na.rm = TRUE, se = FALSE, show.legend = TRUE) +  
+      scale_color_manual(name = "", values = c("Trend Liniowy" = "#d21619")) +
       xlab("Frekwencja wyborcza") +
+      ylab(paste("Współczynnik skolaryzacji brutto \nw szkołach policealnych, \nw tym kolegiach [%]")) +
       theme_light(base_size = 8) +
-      theme(legend.direction = "horizontal", legend.position = "bottom",axis.title.y = element_blank()) +
-      stat_cor(label.x = 60, label.y	= 10, aes(y = wspolczynnik_skolaryzacji_brutto_szkoly_policealne_w_tym_kolegia_wiek_19_21_lat_percent), method = "pearson", size = 3)
+      theme(legend.direction = "horizontal", legend.position = "right") +
+      stat_cor(label.x = 45, label.y	= 10, aes(y = wspolczynnik_skolaryzacji_brutto_szkoly_policealne_w_tym_kolegia_wiek_19_21_lat_percent), method = "pearson", size = 3)
       
     ```
 
@@ -2125,7 +2144,7 @@ N113549_actual <- ggplot(N113549_map_dataset) +
   xlab("") +
   ylab("") +
   theme(legend.direction = "horizontal", 
-        legend.position = "bottom",
+        legend.position = "botton",
         axis.title.y = element_blank())
 
 N113549_predicted <- ggplot(N113549_map_dataset) +
